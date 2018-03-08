@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+		<script src="layui.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<script>
+			layui.use('mobile', function() {
+				var mobile = layui.mobile,
+					layim = mobile.layim;
+				//基础配置
+				layim.config({
+					init: {
+						//设置我的基础信息
+						mine: {
+							"username": "佟丽娅",
+							"id": 123,
+							"avatar": "http://tp4.sinaimg.cn/1345566427/180/5730976522/0",
+							"sign": "我的签名"
+						},
+						"friend": [{
+							"groupname": "前端码屌",
+							"id": 1,
+							"list": [{ //分组下的好友列表
+								"username": "贤心",
+								"id": "100001",
+								"avatar": "a.jpg",
+								"sign": "这些都是测试数据，实际使用请严格按照该格式返回",
+								"status": "online" //若值为offline代表离线，online或者不填为在线
+							}]
+						}]
+					}
+				});
+				//创建一个会话
+//				layim.chat({
+//					id: 111111,
+//					name: '许闲心',
+//					type: 'friend',
+//					avatar: 'http://tp1.sinaimg.cn/1571889140/180/40030060651/1'
+//				});
+//				自定义底部导航
+				moreList: [{
+					alias: 'find',
+					title: '发现',
+					iconUnicode: '&#xe628;',
+					iconClass: '' //图标字体的class类名
+				}, {
+					alias: 'share',
+					title: '分享',
+					iconUnicode: '',
+					iconClass: '' //图标字体的class类名
+				}]
+			});
+		</script>
+		</script>
+	</body>
+
+</html>
