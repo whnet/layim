@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
@@ -8,12 +7,12 @@
 		<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
 		<script src="layui.js" type="text/javascript" charset="utf-8"></script>
 	</head>
-
 	<body>
 		<script>
 			layui.use('mobile', function() {
 				var mobile = layui.mobile,
-					layim = mobile.layim;
+					layim = mobile.layim,
+					layer = mobile.layer;
 				//基础配置
 				layim.config({
 					init: {
@@ -24,40 +23,243 @@
 							"avatar": "http://tp4.sinaimg.cn/1345566427/180/5730976522/0",
 							"sign": "我的签名"
 						},
-						"friend": [{
+						friend: [{
 							"groupname": "前端码屌",
 							"id": 1,
-							"list": [{ //分组下的好友列表
+							"online": 2,
+							"list": [{
 								"username": "贤心",
 								"id": "100001",
-								"avatar": "a.jpg",
-								"sign": "这些都是测试数据，实际使用请严格按照该格式返回",
-								"status": "online" //若值为offline代表离线，online或者不填为在线
+								"avatar": "http://tp1.sinaimg.cn/1571889140/180/40030060651/1",
+								"sign": "这些都是测试数据，实际使用请严格按照该格式返回"
+							}, {
+								"username": "Z_子晴",
+								"id": "108101",
+								"avatar": "http://tva3.sinaimg.cn/crop.0.0.512.512.180/8693225ajw8f2rt20ptykj20e80e8weu.jpg",
+								"sign": "微电商达人"
+							}, {
+								"username": "Lemon_CC",
+								"id": "102101",
+								"avatar": "http://tp2.sinaimg.cn/1833062053/180/5643591594/0",
+								"sign": ""
+							}, {
+								"username": "马小云",
+								"id": "168168",
+								"avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+								"sign": "让天下没有难写的代码",
+								"status": "offline"
+							}, {
+								"username": "徐小峥",
+								"id": "666666",
+								"avatar": "http://tp2.sinaimg.cn/1783286485/180/5677568891/1",
+								"sign": "代码在囧途，也要写到底"
 							}]
+						}, {
+							"groupname": "网红",
+							"id": 2,
+							"online": 3,
+							"list": [{
+								"username": "罗玉凤",
+								"id": "121286",
+								"avatar": "http://tp1.sinaimg.cn/1241679004/180/5743814375/0",
+								"sign": "在自己实力不济的时候，不要去相信什么媒体和记者。他们不是善良的人，有时候候他们的采访对当事人而言就是陷阱"
+							}, {
+								"username": "长泽梓Azusa",
+								"id": "100001222",
+								"sign": "我是日本女艺人长泽あずさ",
+								"avatar": "http://tva1.sinaimg.cn/crop.0.0.180.180.180/86b15b6cjw1e8qgp5bmzyj2050050aa8.jpg"
+							}, {
+								"username": "大鱼_MsYuyu",
+								"id": "12123454",
+								"avatar": "http://tp1.sinaimg.cn/5286730964/50/5745125631/0",
+								"sign": "我瘋了！這也太準了吧  超級笑點低"
+							}, {
+								"username": "谢楠",
+								"id": "10034001",
+								"avatar": "http://tp4.sinaimg.cn/1665074831/180/5617130952/0",
+								"sign": ""
+							}, {
+								"username": "柏雪近在它香",
+								"id": "3435343",
+								"avatar": "http://tp2.sinaimg.cn/2518326245/180/5636099025/0",
+								"sign": ""
+							}]
+						}, {
+							"groupname": "我心中的女神",
+							"id": 3,
+							"online": 1,
+							"list": [{
+								"username": "林心如",
+								"id": "76543",
+								"avatar": "http://tp3.sinaimg.cn/1223762662/180/5741707953/0",
+								"sign": "我爱贤心"
+							}, {
+								"username": "佟丽娅",
+								"id": "4803920",
+								"avatar": "http://tp4.sinaimg.cn/1345566427/180/5730976522/0",
+								"sign": "我也爱贤心吖吖啊"
+							}]
+						}],
+						"group": [{
+							"groupname": "前端群",
+							"id": "101",
+							"avatar": "http://tp2.sinaimg.cn/2211874245/180/40050524279/0"
+						}, {
+							"groupname": "Fly社区官方群",
+							"id": "102",
+							"avatar": "http://tp2.sinaimg.cn/5488749285/50/5719808192/1"
 						}]
-					}
+					},
+					//				自定义底部导航
+					moreList: [{
+						alias: 'find',
+						title: '发现',
+						iconUnicode: '&#xe628;' //图标字体的unicode，可不填
+							,
+						iconClass: '' //图标字体的class类名
+					}, {
+						alias: 'share',
+						title: '分享与邀请',
+						iconUnicode: '&#xe641;',
+						iconClass: '' //图标字体的class类名
+					}],
+					tool: [{
+						alias: 'code',
+						title: '代码',
+						iconUnicode: '&#xe64e;',
+						iconClass: '' //图标字体的class类名
+					}]
 				});
 				//创建一个会话
-//				layim.chat({
-//					id: 111111,
-//					name: '许闲心',
-//					type: 'friend',
-//					avatar: 'http://tp1.sinaimg.cn/1571889140/180/40030060651/1'
+				//				layim.chat({
+				//					id: 111111,
+				//					name: '许闲心',
+				//					type: 'friend',
+				//					avatar: 'http://tp1.sinaimg.cn/1571889140/180/40030060651/1'
+				//				});
+//				更多点击事件
+				layim.on('moreList', function(obj) {
+					switch(obj.alias) {
+						case 'find':
+							layer.msg('自定义发现动作');
+							//模拟标记“发现新动态”为已读
+							layim.showNew('More', false);
+							layim.showNew('find', false);
+							break;
+						case 'share':
+							layim.panel({
+								title: '邀请好友',
+								tpl: '<div style="padding: 10px;">自定义模版，{{d.data.test}}</div>',
+								data: { //数据
+									test: '么么哒'
+								}
+							});
+							break;
+					}
+				});
+//				工具栏点击事件
+				layim.on('tool(code)', function(insert, send, obj){ //事件中的tool为固定字符，而code则为过滤器，对应的是工具别名（alias）
+				 	insert('[pre class=layui-code]123[/pre]'); //将内容插入到编辑器
+					send();
+				}); 
+//				查看更多聊天信息
+				layim.on('chatlog', function(data, ul) {
+					console.log(data);
+					layim.panel({
+						title: '与 ' + data.name + ' 的聊天记录' //标题
+							,
+						tpl: '<div style="padding: 10px;">这里是模版，{{d.data.test}}</div>' //模版
+							,
+						data: { //数据
+							test: 'Hello'
+						}
+					});
+				});
+//				监听我发送消息事件
+				layim.on('sendMessage', function(res){
+					var mine = res.mine;
+					var to = res.to;
+					console.log(mine)
+				});
+//				发送消息
+//				layim.getMessage({
+//				   username: "纸飞机",
+//				   avatar: "http://tp1.sinaimg.cn/1571889140/180/40030060651/1",
+//				   id: "100000",
+//				   type: "friend",
+//				   content: "嗨，你好！本消息系离线消息。",
+//				   mine: false,
+//				   timestamp: 1467475443306 //服务端动态时间戳
 //				});
-//				自定义底部导航
-				moreList: [{
-					alias: 'find',
-					title: '发现',
-					iconUnicode: '&#xe628;',
-					iconClass: '' //图标字体的class类名
-				}, {
-					alias: 'share',
-					title: '分享',
-					iconUnicode: '',
-					iconClass: '' //图标字体的class类名
-				}]
+////				系统消息
+//				layim.getMessage({
+//				  system: true //系统消息
+//				  ,id: 1111111 //聊天窗口ID
+//				  ,type: "friend" //聊天窗口类型
+//				  ,content: '对方已掉线'
+//				  ,avatar: "http://tp1.sinaimg.cn/1571889140/180/40030060651/1"
+//				  ,username: "系统消息",
+//				});
+				//监听点击“新的朋友”
+				layim.on('newFriend', function(){
+				  //弹出面板
+				  layim.panel({
+				    title: '新的朋友' //标题
+				    ,tpl: '<div style="padding: 10px;">自定义模版，{{d.data.test}}</div>' //模版，基于laytpl语法
+				    ,data: { //数据
+				      test: '么么哒'
+				    }
+				  });
+				});
+				//自定义私聊类型
+//				layim.chat({
+//				  name: '在线客服一' //名称
+//				  ,type: 'friend' //聊天类型
+//				  ,avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1' //头像
+//				  ,id: 111 //定义唯一的id方便你处理信息
+//				});
+				 
+				//自定义群聊类型
+//				layim.chat({
+//				  name: '我的群' //名称
+//				  ,type: 'group' //聊天类型
+//				  ,avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1' //头像
+//				  ,id: 222 //定义唯一的id方便你处理信息
+//				});
+//				弹出新页面
+//				layim.panel({
+//				  title: '界面标题'
+//				  ,tpl: '<div style="padding: 10px;">自定义模版，{{d.data.rows}}</div>'
+//				  ,data: { //数据
+//				    test: '么么哒'
+//				  }
+//				});
+				layim.showNew('List', true); //标注“联系人”新动态
+				layim.showNew('More', true); //标注“更多”新动态
+				layim.showNew('Friend', true); //标注“新的朋友”新动态
+				layim.showNew('Group', true); //标注“群聊”新动态
+				layim.showNew('alias', true);
+//				layim.on('chatChange', function(res){
+//				  var type = res.data.type;
+//				  if(type === 'friend'){
+//				    layim.setChatStatus('在线'); //模拟标注好友在线状态
+//				  }
+//				});
+//				添加好友
+				layim.addList({
+				  type: 'friend' //列表类型，只支持friend和group两种
+				  ,avatar: "a.jpg" //好友头像
+				  ,username: '冲田杏梨' //好友昵称
+				  ,groupid: 1 //所在的分组id
+				  ,id: "1233333312121212" //好友id
+				  ,sign: "本人冲田杏梨将结束AV女优的工作" //好友签名
+				})
+//				删除好友
+				layim.removeList({
+				  type: 'friend' //或者group
+				  ,id: 100001 //好友或者群组ID
+				});
 			});
-		</script>
 		</script>
 	</body>
 
